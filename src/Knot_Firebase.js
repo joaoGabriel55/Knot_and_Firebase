@@ -80,15 +80,12 @@ async function main() {
                 }
                 setpoint();
 
-
                 // } else if (auxArr.length > 100 && auxArr[auxArr.length - 1] == auxArr[auxArr.length - 2]) {
                 //     auxArr = [];
                 // }
             }, function (error) {
                 console.log("Error: " + error.code);
             });
-
-            //utils.manipulateSetPoint();
         }
     } catch (err) {
         console.error(err);

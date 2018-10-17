@@ -2,8 +2,8 @@ const KNoTCloud = require('knot-cloud');
 const cloud = new KNoTCloud(
     '10.77.35.43',
     3000,
-    'e75f89e9-c367-4bb3-9210-12ab2cb20000',
-    '06b47f5eeb63592ae6124586e6d4e39fb3d7dc07',
+    'ac424a73-3508-4ca7-a067-8ea92e510000',
+    'f32f559942c54ef95e04c8236ddc0f9adccad6bb',
 );
 
 const temp = e => parseFloat((e.data.value / 100).toFixed(1))
@@ -41,13 +41,13 @@ async function main() {
         await cloud.connect();
         const devices = await cloud.getDevices();
         console.log(devices);
-        while (true) {
-            //await cloud.setData('1a2712e354b27fff', [{ sensorId: 5, value: 27 }]);
-            let array = await cloud.getData('1a2712e354b27fff');
+        //while (true) {
+        await cloud.setData('3f3000e1595126ec', [{ sensorId: 5, value: 33 }]);
+        let array = await cloud.getData('3f3000e1595126ec');
 
-            manipulateTempTest(array)
+        //manipulateTempTest(array)
 
-        }
+        //}
     } catch (err) {
         console.error(err);
     }
