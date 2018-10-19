@@ -1,19 +1,22 @@
-let thingSensors = [
-    { temp: [1, 2, 25] },
-    { temp: [4, 5, 48] }
-]
+var moment = require('moment');
 
-let arrLastValue = []
+const arr = [{
+    data: { sensor_id: 2, value: 25 },
+    timestamp: '2018-08-25T05:29:43.519Z'
+},
+{
+    data: { sensor_id: 1, value: 27 },
+    timestamp: '2018-08-25T05:29:43.520Z'
+}]
 
-for (let i = 0; i < thingSensors.length; i++) {
-    const tempValue = thingSensors[i];
-    for (let j = 0; j < tempValue.temp.length; j++) {
-        //const element = tempValue.temp[j];
-        console.log(tempValue.temp)
-        
-    }
-    arrLastValue.push(tempValue.temp[tempValue.temp.length - 1])
+const time = e => e.timestamp = moment().format("DD/MM/YYYY HH:mm");
+
+let arrTemp = arr.map(e => e.data.value);
+let arrTime = arr.filter(time).map(e => e.timestamp);
+
+let obj = []
+for (let i = 0; i < arrTemp.length; i++) {
+    obj.push({temp: arrTemp[i], time: arrTime[i]})
 }
-console.log(arrLastValue)
-let avg = arrLastValue.reduce((acc, cur) => acc + cur, 0) / arrLastValue.length
-console.log(parseFloat(avg))
+
+console.log(obj)

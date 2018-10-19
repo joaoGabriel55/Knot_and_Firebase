@@ -22,9 +22,9 @@ const temp = e => parseFloat((e.data.value / 100).toFixed(1))
 
 async function setpoint(val) {
     try {
-        //const devices = await cloud.getDevices();
+        //TODO comparaçao        
         await cloud.setData(ID, [{ sensorId: 5, value: val }]);
-        //console.log(devices);
+
     } catch (err) {
         console.error(err);
     }
