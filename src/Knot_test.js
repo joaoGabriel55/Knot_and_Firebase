@@ -10,43 +10,17 @@ const temp = e => parseFloat((e.data.value / 100).toFixed(1))
 const sensor1 = e => e.data.sensor_id == 1
 const sensor2 = e => e.data.sensor_id == 2
 
-function manipulateTempTest(array) {
-    let arrayTemp1 = array.filter(sensor1).map(temp)
-    let arrayTemp2 = array.filter(sensor2).map(temp)
-
-    let thingSensors = [
-        { temp: arrayTemp1 },
-        { temp: arrayTemp2 }
-    ]
-
-    let arrLastValue = []
-
-    for (let i = 0; i < thingSensors.length; i++) {
-        const tempValue = thingSensors[i];
-        for (let j = 0; j < tempValue.temp.length; j++) {
-            let temp = tempValue.temp[j]
-        }
-        arrLastValue.push(tempValue.temp[tempValue.temp.length - 1])
-    }
-    console.log(arrLastValue)
-    let avg = arrLastValue.reduce((acc, cur) => acc + cur, 0) / arrLastValue.length
-    console.log(avg.toFixed(1))
-
-    // console.log(arrayTemp1)
-    // console.log(arrayTemp2)
-}
-
 async function main() {
     try {
         await cloud.connect();
         const devices = await cloud.getDevices();
         console.log(devices);
         //while (true) {
-        await cloud.setData('3f3000e1595126ec', [{ sensorId: 5, value: 33 }]);
-        let array = await cloud.getData('3f3000e1595126ec');
+        //await cloud.setData('292b31b67ec658ea', [{ sensorId: 6, value: 27 }]);
+        let array = await cloud.getData('292b31b67ec658ea');
 
         //manipulateTempTest(array)
-
+        console.log(array);
         //}
     } catch (err) {
         console.error(err);
