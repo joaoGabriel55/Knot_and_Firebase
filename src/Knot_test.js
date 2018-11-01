@@ -16,8 +16,8 @@ async function main() {
         const devices = await cloud.getDevices();
         console.log(devices);
         //while (true) {
-        //await cloud.setData('292b31b67ec658ea', [{ sensorId: 6, value: 27 }]);
-        let array = await cloud.getData('292b31b67ec658ea');
+        await cloud.setData('2fbd47b25fb46875', [{ sensorId: 6, value: 35 }]);
+        let array = await cloud.getData('2fbd47b25fb46875');
 
         //manipulateTempTest(array)
         console.log(array);

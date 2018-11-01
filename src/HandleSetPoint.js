@@ -1,6 +1,7 @@
 var admin = require("firebase-admin");
-
 var serviceAccount = require("./graincontrolServiceAccount.json");
+const deviceId = require('./deviceID')
+
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -15,7 +16,7 @@ const cloud = new KNoTCloud(
     'f32f559942c54ef95e04c8236ddc0f9adccad6bb',
 );
 
-const ID = '292b31b67ec658ea'
+const ID = deviceId.ID
 
 async function main(val) {
     try {

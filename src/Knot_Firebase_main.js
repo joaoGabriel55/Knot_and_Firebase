@@ -2,6 +2,7 @@ const KNoTCloud = require('knot-cloud');
 const admin = require("firebase-admin");
 const serviceAccount = require("./graincontrolServiceAccount.json");
 const moment = require('moment');
+const deviceId = require('./deviceID')
 
 const cloud = new KNoTCloud(
     '10.77.35.43',
@@ -17,7 +18,7 @@ admin.initializeApp({
 
 let arrayCompare = [];
 
-const ID = '292b31b67ec658ea'
+const ID = deviceId.ID
 
 const temp = e => parseFloat((e.data.value / 100).toFixed(1));
 const time = e => e.timestamp = moment().format("HH:mm");
@@ -111,3 +112,5 @@ async function main() {
     await cloud.close();
 }
 main();
+
+module.exports = {ID}
